@@ -37,3 +37,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+# SQLite database file — local data, never push to GitHub
+*.db
