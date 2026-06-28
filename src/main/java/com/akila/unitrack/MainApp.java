@@ -3,32 +3,32 @@ package com.akila.unitrack;
 import com.akila.unitrack.db.DatabaseManager;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
 
 // MainApp is the entry point of JavaFX application
 public class MainApp extends Application {
     // start() is called automatically when the app launches
     // Stage is the main window of the app
     @Override
-    public void start(Stage stage){
+    public void start(Stage stage) throws Exception {
 
         // Initialize the database when app starts
         DatabaseManager.initializeDatabase();
 
-        Label label = new Label("UniTrack is running! DB connected.");
+        // Load the dashboard layout from FXML file
+        // FXMLLoader reads dashboard.fxml and connect it to MainController
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/com/akila/unitrack/dashboard.fxml")
+        );
 
-        //  StackPane is a simple layout that centers its content
-        StackPane root = new StackPane(label);
-
-        // Scene is what goes inside the stage
-        // 800X600 is the window size in pixels
-        Scene scene = new Scene(root, 800, 600);
+        // Create the scene with the loaded layout(1000x700)
+        Scene scene = new Scene(loader.load(), 1000, 700);
 
         // set the window title and attach the scene
         stage.setTitle("UniTrack - Academic Record Manager");
         stage.setScene(scene);
+        stage.setResizable(true);
 
         // Show the window
         stage.show();

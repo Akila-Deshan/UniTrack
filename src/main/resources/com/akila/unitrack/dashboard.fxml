@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<!--dashboard.fxml — Main UI layout for UniTrack-->
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.akila.unitrack.controller.MainController"
+            prefWidth="1000" prefHeight="700">
+
+    <!-- TOP: App title bar -->
+    <top>
+        <Label text="UniTrack — Personal Academic Record Manager"
+               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 15px;"/>
+    </top>
+
+    <!-- LEFT: Add module form -->
+    <left>
+        <VBox spacing="10" style="-fx-padding: 15px; -fx-background-color: #f4f4f4;">
+
+            <Label text="Add Module" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+            <!-- Module Name -->
+            <Label text="Module Name:"/>
+            <TextField fx:id="moduleNameField" promptText="e.g. Data Structures and Algorithms"/>
+
+            <!-- Module Code -->
+            <Label text="Module Code:"/>
+            <TextField fx:id="moduleCodeField" promptText="e.g. CCS2300"/>
+
+            <!-- Credits -->
+            <Label text="Credits:"/>
+            <TextField fx:id="creditsField" promptText="e.g. 3"/>
+
+            <!-- Grade dropdown — no typing, select only -->
+            <Label text="Grade:"/>
+            <ComboBox fx:id="gradeComboBox" promptText="Select Grade" maxWidth="Infinity"/>
+
+            <!-- Semester dropdown — no typing, select only -->
+            <Label text="Semester:"/>
+            <ComboBox fx:id="semesterComboBox" promptText="Select Semester" maxWidth="Infinity"/>
+
+            <!-- Add button -->
+            <Button text="Add Module" onAction="#handleAddModule"
+                    maxWidth="Infinity"
+                    style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+            <!-- Status message — shows success or error -->
+            <Label fx:id="statusLabel" text="" wrapText="true"/>
+
+            <Separator/>
+
+            <!-- Cumulative GPA display -->
+            <Label text="Overall Progress" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+            <Label fx:id="cumulativeGPALabel" text="Cumulative GPA: —"/>
+            <Label fx:id="cumulativeClassLabel" text="Current Class: —"/>
+
+        </VBox>
+    </left>
+
+    <!-- CENTER: Semester viewer + module table -->
+    <center>
+        <VBox spacing="10" style="-fx-padding: 15px;">
+
+            <!-- Semester selector for viewing results -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="View Semester:"/>
+                <ComboBox fx:id="viewSemesterComboBox" promptText="Select Semester"/>
+                <Button text="View" onAction="#handleViewSemester"
+                        style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+                <Button text="Delete Selected" onAction="#handleDeleteModule"
+                        style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+            </HBox>
+
+            <!-- Semester GPA display -->
+            <HBox spacing="20">
+                <Label fx:id="semesterGPALabel" text="Semester GPA: —"/>
+                <Label fx:id="semesterClassLabel" text="Class: —"/>
+            </HBox>
+
+            <!-- Module table -->
+            <TableView fx:id="moduleTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="nameColumn"        text="Module Name"   prefWidth="220"/>
+                    <TableColumn fx:id="codeColumn"        text="Code"          prefWidth="100"/>
+                    <TableColumn fx:id="creditsColumn"     text="Credits"       prefWidth="70"/>
+                    <TableColumn fx:id="gradeColumn"       text="Grade"         prefWidth="70"/>
+                    <TableColumn fx:id="gradePointsColumn" text="Grade Points"  prefWidth="100"/>
+                </columns>
+                <placeholder>
+                    <Label text="No modules found. Select a semester and click View."/>
+                </placeholder>
+            </TableView>
+
+        </VBox>
+    </center>
+
+    <!-- BOTTOM: Academic report area -->
+    <bottom>
+        <VBox spacing="5" style="-fx-padding: 15px;">
+            <Label text="Academic Report"
+                   style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+            <TextArea fx:id="academicReportArea"
+                      promptText="Academic report will appear here when a semester is complete..."
+                      editable="false"
+                      prefHeight="150"/>
+        </VBox>
+    </bottom>
+
+</BorderPane>

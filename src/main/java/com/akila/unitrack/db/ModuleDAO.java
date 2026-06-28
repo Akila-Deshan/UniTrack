@@ -87,7 +87,7 @@ public class ModuleDAO {
     }
 
     // Get all modules for a specific semester
-    public static List<Module> getModuleBySemester(String semester){
+    public static List<Module> getModulesBySemester(String semester){
         List<Module> modules = new ArrayList<>();
         String sql = "SELECT * FROM modules WHERE semester = ?";
 
