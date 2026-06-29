@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
 
 // MainApp is the entry point of JavaFX application
 public class MainApp extends Application {
@@ -23,12 +24,23 @@ public class MainApp extends Application {
         );
 
         // Create the scene with the loaded layout(1000x700)
-        Scene scene = new Scene(loader.load(), 1000, 700);
+        Scene scene = new Scene(loader.load(), 1280, 850);
 
         // set the window title and attach the scene
         stage.setTitle("UniTrack - Academic Record Manager");
         stage.setScene(scene);
         stage.setResizable(true);
+
+        // Set app icon for the window title bar
+        stage.getIcons().add(new Image(
+                getClass().getResourceAsStream("/com/akila/unitrack/icon.png")
+        ));
+
+        // Apply stylesheet to the entire app
+        scene.getStylesheets().add(
+                getClass().getResource("/com/akila/unitrack/styles.css").toExternalForm()
+        );
+
 
         // Show the window
         stage.show();
