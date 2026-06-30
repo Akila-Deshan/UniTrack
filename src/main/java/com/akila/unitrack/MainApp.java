@@ -24,7 +24,7 @@ public class MainApp extends Application {
         );
 
         // Create the scene with the loaded layout(1000x700)
-        Scene scene = new Scene(loader.load(), 1280, 850);
+        Scene scene = new Scene(loader.load(), 1280, 870);
 
         // set the window title and attach the scene
         stage.setTitle("UniTrack - Academic Record Manager");

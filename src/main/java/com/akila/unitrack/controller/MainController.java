@@ -185,6 +185,16 @@ public class MainController {
 
         semesterGPALabel.setText("Semester GPA: " + semesterGPA);
         semesterClassLabel.setText("Class: " + semesterClass);
+
+        // Show the report if the semester is already complete
+        // This let users view past completed semesters reports anytime
+        if (GPACalculator.isSemesterFull(selectedSemester, semesterModules.size())){
+            generateReport(selectedSemester);
+        } else {
+            // Clear report area if semester isnt complete and show a msg
+            academicReportArea.setText("This semester is still in progress. " +
+                    "Complete all modules to see the academic report.");
+        }
     }
 
     // Call when user click on the delete button on a selected module

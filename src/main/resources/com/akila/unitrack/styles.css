@@ -1,7 +1,7 @@
 /* UniTrack — Main Stylesheet */
 
 /* Background */
-.root {
+.root-pane {
     -fx-background-color: #f4f6f9;
     -fx-font-family: "Segoe UI", sans-serif;
     -fx-font-size: 13px;
@@ -12,17 +12,60 @@
     -fx-font-size: 20px;
     -fx-font-weight: bold;
     -fx-text-fill: white;
+}
+/* Title bar background */
+.title-bar {
     -fx-background-color: #1a3a5c;
     -fx-padding: 15px 20px;
 }
 
-/* Left Panel (Add Module Form) */
+/* Left sidebar panel */
 .left-panel {
     -fx-background-color: white;
     -fx-padding: 20px;
-    -fx-pref-width: 220px;
+    -fx-pref-width: 230px;
     -fx-border-color: #e0e0e0;
     -fx-border-width: 0 1 0 0;
+}
+
+/* Field labels e.g. Module Name, Credits */
+.field-label {
+    -fx-text-fill: #555555;
+    -fx-font-weight: bold;
+}
+
+/* Divider between GPA and Class labels */
+.divider-label {
+    -fx-text-fill: #d0d0d0;
+}
+
+/* Center content panel */
+.center-panel {
+    -fx-padding: 20px;
+    -fx-background-color: #f4f6f9;
+}
+
+/* GPA display bar above table */
+.gpa-bar {
+    -fx-background-color: white;
+    -fx-padding: 10px 15px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-border-color: #e0e0e0;
+}
+
+/* Placeholder text in empty table */
+.placeholder-text {
+    -fx-text-fill: #aaaaaa;
+    -fx-font-size: 13px;
+}
+
+/* Bottom panel for academic report */
+.bottom-panel {
+    -fx-padding: 15px 20px;
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1 0 0 0;
 }
 
 .section-title {
@@ -33,16 +76,15 @@
 }
 
 /* Input Fields */
-.text-field, .combo-box {
+.input-field {
     -fx-background-color: #f4f6f9;
     -fx-border-color: #d0d0d0;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
     -fx-padding: 6px;
-    -fx-pref-width: 180px;
 }
 
-.text-field:focused, .combo-box:focused {
+.input-field:focused {
     -fx-border-color: #00b4d8;
     -fx-border-width: 2px;
 }
@@ -97,14 +139,10 @@
 
 .class-label {
     -fx-font-size: 13px;
-    -fx-text-fill: #f5821f;
+    -fx-text-fill: #2e7d32;
     -fx-font-weight: bold;
-}
-
-/* Separator */
-.separator {
-    -fx-background-color: #e0e0e0;
-    -fx-padding: 5px 0;
+    -fx-wrap-text: true;
+    -fx-max-width: 190px;
 }
 
 /* Table */
@@ -138,15 +176,9 @@
 }
 
 /* Academic Report Area */
-.report-title {
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #1a3a5c;
-}
-
 .report-area {
     -fx-background-color: #1a3a5c;
-    -fx-text-fill: black;
+    -fx-text-fill: white;
     -fx-font-family: "Consolas", monospace;
     -fx-font-size: 12px;
     -fx-border-radius: 8px;
