@@ -1,5 +1,6 @@
 package com.akila.unitrack.db;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -7,13 +8,24 @@ import java.sql.Statement;
 // DatabaseManager handles all database connectivity for UniTrack
 public class DatabaseManager {
 
-    // create local file called unitrack.db
-    // This file will appear in the project root folder after first run
-    private static final String DB_URL = "jdbc:sqlite:unitrack.db";
+    // Store the database in the users Appdata folder instead of the app's
+    //install directory
+    private static final String DB_FOLDER =
+            System.getProperty("user.home") + File.separator + "UniTrack";
+
+    private static final String DB_URL =
+            "jdbc:sqlite:" + DB_FOLDER + File.separator + "unitrack.db";
 
     //  Gives a connection to the database
     public static Connection getConnection() throws Exception {
+        // Ensure the UniTrack folder exists in the user's home directory
+        File folder = new File(DB_FOLDER);
+        if (!folder.exists()){
+            folder.mkdirs();
+        }
+
         return DriverManager.getConnection(DB_URL);
+
     }
     //This runs once when the app starts
     //it creates module table if it doesnt exists
